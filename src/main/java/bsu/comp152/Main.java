@@ -18,27 +18,24 @@ public class Main {
 
         System.out.println("What if we use println on an Array?");
         System.out.println(group1);
-
-        System.out.println("Loop through the indices to print group1:");
-        for (int i = 0; i < group1.length; i++){
-            System.out.println(group1[i]);
-        }
         System.out.println();
-        System.out.println("Loop through the indices to print group2:");
-        for (int i = 0; i < group2.length; i++){
-            System.out.println(group2[i]);
-        }
+        System.out.println("Print group1:");
+        printArray(group1);
+        System.out.println();
+        System.out.println("Print group2:");
+        printArray(group2);
         System.out.println();
         System.out.println("Overwrite elements of group2:");
         group2[0] = "Chris";
         group2[1] = "Jason";
         group2[2] = "Matthew";
 
-        for (int i = 0; i < group2.length; i++){
-            System.out.println(group2[i]);
-        }
+        printArray(group2);
         System.out.println();
-        for (String element : group2){
+
+        System.out.println("Loop through the elements to print group2:");
+        System.out.println();
+        for (String element : group2) {
             System.out.println(element);
         }
         System.out.println();
@@ -56,15 +53,14 @@ public class Main {
          * ***********************************************************
          * They are different from arrays.  They can expand and shrink.
          */
-
         // Here we declare and create an ArrayList roster to hold elements of type String.
         ArrayList<String> roster = new ArrayList<String>();
 
         // Note: An ArrayList can also be created with a parameterized constructor:
         ArrayList<String> arrayList2 = new ArrayList<String>(100);
 
-        /*System.out.println("Call add to populate the ArrayList with \"James\":");
-        arrayList2.add("James");
+        System.out.println("Call add to populate the ArrayList with \"Lilu\".");
+        arrayList2.add("Lilu");
 
         // We can also do this from the keyboard.
         Scanner console = new Scanner(System.in);
@@ -73,35 +69,37 @@ public class Main {
         System.out.println();
 
         System.out.println("The elements of arrayList2 are:");
-        printArrayList(arrayList2);
-        System.out.println();
-        System.out.println("Call set to overwrite the element at index 0.");
-        arrayList2.set(0, "Abdullah");
+        System.out.println(arrayList2); // The ArrayList class has a toString method!
 
-        System.out.println();
+        System.out.println("Call set to overwrite the element at index 0.");
+        arrayList2.set(0, "Bosari");
+
         System.out.println("The elements of arrayList2 are:");
-        printArrayList(arrayList2);
-        System.out.println();*/
+        System.out.println(arrayList2);
 
         System.out.println("We can also read from a file.");
-
-        File myfile = new File("names002");
+        File myfile = new File("names003");
         Scanner inputFile = new Scanner(myfile);
         while (inputFile.hasNext()) {
             roster.add(inputFile.nextLine());
         }
-        printArrayList(roster);
+        System.out.println(roster);
+
         int numberNames = roster.size();
-        System.out.printf("number of names: %d\n", numberNames);
         Random rand = new Random();
-        int randomIndex = rand.nextInt(14);
-        System.out.printf("At random, pick %s.\n", roster.get(randomIndex));
+        int randIndex = rand.nextInt(16);
+        System.out.printf("A random name is: %s", roster.get(randIndex));
     }
-    public static void printArrayList(ArrayList arrayLst){
-        for (int i = 0; i < arrayLst.size(); i++) {
-            System.out.println(arrayLst.get(i));
+
+    /**
+     * A method to loop through the indices to print the String elements of an Array arr
+     * @param arr
+     */
+    public static void printArray(String[] arr){
+        String str = "[" + arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            str = str + ", " + arr[i];
         }
+        System.out.println(str + "]");
     }
-
-
 }
