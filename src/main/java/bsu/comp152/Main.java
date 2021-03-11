@@ -3,6 +3,7 @@ package bsu.comp152;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
@@ -62,8 +63,8 @@ public class Main {
         // Note: An ArrayList can also be created with a parameterized constructor:
         ArrayList<String> arrayList2 = new ArrayList<String>(100);
 
-        System.out.println("Call add to populate the ArrayList with \"Joao\".");
-        arrayList2.add("Joao");
+        /*System.out.println("Call add to populate the ArrayList with \"James\":");
+        arrayList2.add("James");
 
         // We can also do this from the keyboard.
         Scanner console = new Scanner(System.in);
@@ -72,34 +73,35 @@ public class Main {
         System.out.println();
 
         System.out.println("The elements of arrayList2 are:");
-        for (int i = 0; i < arrayList2.size(); i++) {
-            // Call the size method on an ArrayList as needed.
-            // Call get to return the element at index i.
-            System.out.println(arrayList2.get(i));
-        }
+        printArrayList(arrayList2);
         System.out.println();
-
         System.out.println("Call set to overwrite the element at index 0.");
-        arrayList2.set(0, "Alves");
-        System.out.println();
+        arrayList2.set(0, "Abdullah");
 
-        System.out.println("The elements of arrayList2 are:");
-        for (int i = 0; i < arrayList2.size(); i++) {
-            // Call get to return the element at index i.
-            System.out.println(arrayList2.get(i));
-        }
         System.out.println();
+        System.out.println("The elements of arrayList2 are:");
+        printArrayList(arrayList2);
+        System.out.println();*/
 
         System.out.println("We can also read from a file.");
-        File myfile = new File("names001.txt");
+
+        File myfile = new File("names002");
         Scanner inputFile = new Scanner(myfile);
-        while (inputFile.hasNext()){
+        while (inputFile.hasNext()) {
             roster.add(inputFile.nextLine());
         }
-
-        for (int i = 0; i < roster.size(); i++) {
-            System.out.println(roster.get(i));
-        }
-
+        printArrayList(roster);
+        int numberNames = roster.size();
+        System.out.printf("number of names: %d\n", numberNames);
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(14);
+        System.out.printf("At random, pick %s.\n", roster.get(randomIndex));
     }
+    public static void printArrayList(ArrayList arrayLst){
+        for (int i = 0; i < arrayLst.size(); i++) {
+            System.out.println(arrayLst.get(i));
+        }
+    }
+
+
 }
