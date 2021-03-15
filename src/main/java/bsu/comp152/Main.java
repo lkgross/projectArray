@@ -87,7 +87,7 @@ public class Main {
 
         int numberNames = roster.size();
         Random rand = new Random();
-        int randIndex = rand.nextInt(16);
+        int randIndex = rand.nextInt(numberNames);
         System.out.printf("A random name is: %s", roster.get(randIndex));
     }
 
